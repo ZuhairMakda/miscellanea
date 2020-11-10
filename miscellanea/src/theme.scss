@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$nice-blue: ( 50 : #e7fafc, 100 : #c3f2f8, 200 : #9beaf4, 300 : #73e2ef, 400 : #55dbeb, 500 : #37d5e8, 600 : #31d0e5, 700 : #2acae2, 800 : #23c4de, 900 : #16bad8, A100 : #ffffff, A200 : #d6f8ff, A400 : #a3efff, A700 : #8aebff, contrast: ( 50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #000000, 500 : #000000, 600 : #000000, 700 : #000000, 800 : #000000, 900 : #000000, A100 : #000000, A200 : #000000, A400 : #000000, A700 : #000000, ) );
+
+$hatch-app-primary: mat-palette($mat-blue-grey);
+//$hatch-app-accent: mat-palette($mat-pink, 500, 900, A100);
+$hatch-app-accent: mat-palette($nice-blue);
+$hatch-app-warn: mat-palette($mat-deep-orange);
+
+$hatch-app-theme: mat-light-theme($hatch-app-primary, $hatch-app-accent, $hatch-app-warn);
+
+@include angular-material-theme($hatch-app-theme);

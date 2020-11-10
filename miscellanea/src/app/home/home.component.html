@@ -1,0 +1,57 @@
+<body>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <!-- <div id="toolbarWithLogo" fxLayout fxLayout.xs="column" fxLayoutAlign="center"
+          fxLayoutGap="350px" fxLayoutGap.xs="0">
+          <div class="item" fxFlex>
+              <img src="assets/Hatch_Logo.png">
+          </div>
+          <div class="item" fxFlex>
+              <mat-label style="font-family: Source Sans Pro,sans-serif;"><strong>Estimating Governance Register</strong></mat-label>
+          </div>
+          </div> -->
+        <span class="span">Miscellanea</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="container">
+        <mat-tab-group mat-stretch-tabs color="warn" dynamicHeight>
+          <mat-tab label="Good {{time}}!!">
+            <div class="container" fxLayout fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+              fxLayoutGap="30px" fxLayoutGap.xs="0" fxLayoutGap.sm="0" style="margin-top: 2%;">
+              <div class="item" fxFlex *ngIf="!(searching | async)">
+    
+                <form>
+                  <mat-form-field>
+                    <mat-label>Search</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="search" matInput
+                        [(ngModel)]="searchCriteria" formControlName="search" (keydown.enter)="search()">
+                    </div>
+                    <button mat-icon-button type="button" matSuffix (click)="search()" matTooltip="Search">
+                      <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </form>
+    
+              </div>
+    
+              <div class="item" fxFlex *ngIf="(searching | async)">
+                <mat-label style="color: #E84A37 !important; font-weight: bold; font-size: medium;">Searching...
+                </mat-label>
+                <mat-progress-bar [color]="color" [mode]="mode">
+                </mat-progress-bar>
+              </div>
+            </div>
+    
+          </mat-tab>
+        </mat-tab-group>
+
+    
+        <button mat-mini-fab (click)="addListing()" matTooltip="Add Listing" [matTooltipPosition]='tooltipPosition'
+          id="new">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+</body>
