@@ -1,7 +1,11 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TooltipPosition } from '@angular/material/tooltip';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data-service.service';
+import { Listing } from '../models/listing';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +32,13 @@ export class HomeComponent implements OnInit {
   color = 'warn';
   mode = 'indeterminate';
 
-  constructor(private _snackBar: MatSnackBar) { }
+  searchedFor: Listing; 
+
+  constructor(
+    private _snackBar: MatSnackBar,
+    private dataService: DataService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.getTime();
@@ -60,6 +70,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       // this.router.navigate(['/project', this.update.chosenProjectNumber]);
       console.log(this.searchCriteria);
+      this.searchedFor.name = this.searchCriteria;
       this.searching = Promise.resolve(false);
     }, 2000);
     
@@ -67,6 +78,16 @@ export class HomeComponent implements OnInit {
 
   addListing() {
     console.log("add listing");
+
+    this.dataService.sharedVariable = "shared home";
+
+    console.log(this.dataService.sharedVariable);
+
+    
+  }
+
+  goToDeals() {
+    this.router.navigate(['/deals']);
   }
 
   openSnackBar(message: string, action: string) {

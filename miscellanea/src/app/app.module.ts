@@ -13,15 +13,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DealsComponent } from './deals/deals.component';
+import { DataService } from './services/data-service.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
+  { path: 'deals', component: DealsComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DealsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- for debugging purposes only)
     ),
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

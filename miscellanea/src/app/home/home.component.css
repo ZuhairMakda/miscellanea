@@ -51,6 +51,16 @@
     z-index: 999;
   }
 
+  #deals {  
+    float: right;
+    color:white;
+    background-color: #e84a37;
+    box-shadow: 20px;
+    position: fixed;
+    bottom: 60px;
+    right: 18px;
+    z-index: 999;
+  }
   
   
   button:focus {outline:0;}

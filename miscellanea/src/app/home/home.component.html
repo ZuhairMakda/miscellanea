@@ -1,15 +1,6 @@
 <body>
     <mat-toolbar>
       <mat-toolbar-row>
-        <!-- <div id="toolbarWithLogo" fxLayout fxLayout.xs="column" fxLayoutAlign="center"
-          fxLayoutGap="350px" fxLayoutGap.xs="0">
-          <div class="item" fxFlex>
-              <img src="assets/Hatch_Logo.png">
-          </div>
-          <div class="item" fxFlex>
-              <mat-label style="font-family: Source Sans Pro,sans-serif;"><strong>Estimating Governance Register</strong></mat-label>
-          </div>
-          </div> -->
         <span class="span">Miscellanea</span>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -47,7 +38,12 @@
           </mat-tab>
         </mat-tab-group>
 
-    
+        
+        <button mat-mini-fab (click)="goToDeals()" matTooltip="Go to Deals" [matTooltipPosition]='tooltipPosition'
+          id="deals">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+
         <button mat-mini-fab (click)="addListing()" matTooltip="Add Listing" [matTooltipPosition]='tooltipPosition'
           id="new">
           <mat-icon>add</mat-icon>

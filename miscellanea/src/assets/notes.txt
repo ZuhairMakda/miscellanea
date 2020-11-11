@@ -1,0 +1,18 @@
+Home Page -
+    Search bar 
+    Links to other pages
+
+Deals Page - 
+    Deals
+    Links to other pages
+
+Listings Page - 
+    Show searched for Listings
+    Filters
+    Switch between looking for items vs looking for buyers
+    links to other pages
+
+Make a listing page (posting page) - 
+    Input required details about sought after user or item to sell
+    button to post 
+    links to other pages
