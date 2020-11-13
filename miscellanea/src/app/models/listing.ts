@@ -3,10 +3,11 @@ export interface Listing {
     name: string;
     price: string;
     contact: Contact;
+    condition: string;
+    description: string;
 }
 
 export interface Contact {
     username: string;
     phoneNum: string;
-    email: string;
 }

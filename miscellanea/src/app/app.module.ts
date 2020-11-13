@@ -15,17 +15,23 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DealsComponent } from './deals/deals.component';
 import { DataService } from './services/data-service.service';
+import { ListingsComponent } from './listings/listings.component';
+import { PostComponent } from './post/post.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'deals', component: DealsComponent},
+  { path: 'Post', component: PostComponent},
+  { path: 'listings', component: ListingsComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DealsComponent
+    DealsComponent,
+    ListingsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

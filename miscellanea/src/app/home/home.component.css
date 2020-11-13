@@ -87,6 +87,13 @@
       font-size: medium;
     }
   }
+
+  .Logo{
+    position: absolute;
+    top: 20px;
+    left: calc(3vw - 10px);
+    width: 50px;
+  }
   
   
   
