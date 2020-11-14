@@ -1,19 +1,27 @@
 <body>
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <!-- <div id="toolbarWithLogo" fxLayout fxLayout.xs="column" fxLayoutAlign="center"
-          fxLayoutGap="350px" fxLayoutGap.xs="0">
-          <div class="item" fxFlex>
-              <img src="assets/Hatch_Logo.png">
-          </div>
-          <div class="item" fxFlex>
-              <mat-label style="font-family: Source Sans Pro,sans-serif;"><strong>Estimating Governance Register</strong></mat-label>
-          </div>
-          </div> -->
-        <span class="span">Miscellanea</span>
-      </mat-toolbar-row>
-    </mat-toolbar>
+  <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
+    <span> <a routerLink="/" matTooltip="Add Listing" [matTooltipPosition]='tooltipPosition'> <img class="Logo" src="../../assets/miscellanea_logo.png"> </a></span>
+    <span fxFlex></span>
+    <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
+    <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+  </mat-toolbar>
+
+  <div class="content" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.lg="33%" *ngFor="let deal of deals">
+      <mat-card>
+        <a href={{deal.link}} target="_blank"> 
+        <img mat-card-image class="deal-image" src={{deal.imgLink}}>
+      </a>
+        <mat-card-content class="deal-content">
+          <p id="description">
+            {{deal.description}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
 
     
-
 </body>
