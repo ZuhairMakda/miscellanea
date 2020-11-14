@@ -13,8 +13,4 @@ export class DealsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  printshared() {
-    console.log(this.dataService.sharedVariable)
-  }
-
 }

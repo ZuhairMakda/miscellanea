@@ -17,12 +17,14 @@ import { DealsComponent } from './deals/deals.component';
 import { DataService } from './services/data-service.service';
 import { ListingsComponent } from './listings/listings.component';
 import { PostComponent } from './post/post.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'deals', component: DealsComponent},
-  { path: 'Post', component: PostComponent},
+  { path: 'post', component: PostComponent},
   { path: 'listings', component: ListingsComponent},
+  { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 
 @NgModule({
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     HomeComponent,
     DealsComponent,
     ListingsComponent,
-    PostComponent
+    PostComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

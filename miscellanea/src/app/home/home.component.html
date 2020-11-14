@@ -1,9 +1,9 @@
 <body>
-    <mat-toolbar>
-      <mat-toolbar-row>
+    <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
         <span> <img class="Logo" src="../../assets/miscellanea_logo.png"></span>
-        <span class="span">Miscellanea</span>
-      </mat-toolbar-row>
+        <span fxFlex></span>
+          <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
+          <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
     </mat-toolbar>
 
     <div class="container">
@@ -23,6 +23,7 @@
                     <button mat-icon-button type="button" matSuffix (click)="search()" matTooltip="Search">
                       <mat-icon>arrow_forward_ios</mat-icon>
                     </button>
+                    <mat-error *ngIf="hasError('search', 'required')">This field is <strong>mandatory</strong></mat-error>
                   </mat-form-field>
                 </form>
     
@@ -39,13 +40,8 @@
           </mat-tab>
         </mat-tab-group>
 
-        
-        <button mat-mini-fab (click)="goToDeals()" matTooltip="Go to Deals" [matTooltipPosition]='tooltipPosition'
-          id="deals">
-          <mat-icon>chevron_right</mat-icon>
-        </button>
 
-        <button mat-mini-fab (click)="addListing()" matTooltip="Add Listing" [matTooltipPosition]='tooltipPosition'
+        <button mat-mini-fab (click)="goToPost()" matTooltip="Add Listing" [matTooltipPosition]='tooltipPosition'
           id="new">
           <mat-icon>add</mat-icon>
         </button>

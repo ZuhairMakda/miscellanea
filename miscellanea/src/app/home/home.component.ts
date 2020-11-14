@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getTime();
     this.searching = Promise.resolve(false);
+    this.dataService.searchCriteria = "";
   }
 
   getTime() {
@@ -58,36 +59,39 @@ export class HomeComponent implements OnInit {
   }
 
   public myGroup: FormGroup = new FormGroup({
-    search: new FormControl({ value: this.searchCriteria })
+    search: new FormControl({ value: this.searchCriteria }, [Validators.required])
   });
   public hasError = (controlName: string, errorName: string) => {
     return this.myGroup.controls[controlName].hasError(errorName);
   }
 
   search() {
-    this.searching = Promise.resolve(true);
-    this.openSnackBar("Searching", "Close");
-    setTimeout(() => {
-      // this.router.navigate(['/project', this.update.chosenProjectNumber]);
-      console.log(this.searchCriteria);
-      this.searchedFor.name = this.searchCriteria;
-      this.searching = Promise.resolve(false);
-    }, 2000);
-    
-  }
+    // this.searching = Promise.resolve(true);
+    // this.openSnackBar("Searching", "Close");
 
-  addListing() {
-    console.log("add listing");
+    if (this.searchCriteria.trim().toLowerCase() === "") {
+      this.openSnackBar("Please Enter a Valid Search Criteria Before Searching", "Close");
+      // this.searching = Promise.resolve(false);
+    } else {
+      this.dataService.searchCriteria = this.searchCriteria;
+      // this.searching = Promise.resolve(false);
+      this.router.navigate(['/listings']);
+    }
 
-    this.dataService.sharedVariable = "shared home";
-
-    console.log(this.dataService.sharedVariable);
-
+      
     
   }
 
   goToDeals() {
     this.router.navigate(['/deals']);
+  }
+
+  goToPost() {
+    this.router.navigate(['/post']);
+  }
+
+  goToListings() {
+    this.router.navigate(['/listings']);
   }
 
   openSnackBar(message: string, action: string) {

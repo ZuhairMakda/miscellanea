@@ -1,1 +1,143 @@
-<p>listings works!</p>
+<body>
+    <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
+        <span> <a routerLink="/" matTooltip="Go Home to Make a new search" [matTooltipPosition]='tooltipPosition'> <img
+                    class="Logo" src="../../assets/miscellanea_logo.png"> </a></span>
+        <span fxFlex></span>
+        <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
+        <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+    </mat-toolbar>
+
+
+    <div class="container" fxLayout fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left" fxLayoutGap="30px"
+        fxLayoutGap.xs="0" fxLayoutGap.sm="0" style="margin-top: 2%;">
+        <div class="item" fxFlex="20">
+
+            <mat-tab-group mat-stretch-tabs color="warn" dynamicHeight style="background-color: white;" *ngIf="(showData | async)">
+                <mat-tab label="Filters">
+
+                    <div class="container" fxLayout="column" fxLayout.xs="column" fxLayout.sm="column"
+                        fxLayoutAlign="left" fxLayoutGap="30px" fxLayoutGap.xs="0" fxLayoutGap.sm="0"
+                        style="margin-top: 2%;">
+
+                        <div class="item" fxFlex>
+                            <mat-form-field>
+                                <mat-label>Condition</mat-label>
+                                <mat-select [(value)]="conditionFilter">
+                                    <mat-option value="new">NEW</mat-option>
+                                    <mat-option value="used">USED</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="item" fxFlex>
+                            <mat-form-field>
+                                <mat-label>Request Type</mat-label>
+                                <mat-select [(value)]="requestTypeFilter">
+                                    <mat-option value="buy">BUY</mat-option>
+                                    <mat-option value="sell">SELL</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="item" fxFlex>
+                            <div class="container" fxLayout fxLayout.xs="column" fxLayout.sm="column"
+                                fxLayoutAlign="left" fxLayoutGap="30px" fxLayoutGap.xs="0" fxLayoutGap.sm="0"
+                                style="margin-top: 2%;">
+                                <div class="item" fxFlex="35">
+                                    <mat-form-field>
+                                        <mat-label>Min Price</mat-label>
+                                        <input type="number" aria-label="priceMin" matInput [(ngModel)]="price[0]">
+                                        <span matPrefix id="presuffix">$&nbsp;</span>
+                                    </mat-form-field>
+                                </div>
+                                <div class="item" fxFlex="35">
+                                    <mat-form-field>
+                                        <mat-label>Max Price</mat-label>
+                                        <input type="number" aria-label="priceMax" matInput [(ngModel)]="price[1]">
+                                        <span matPrefix id="presuffix">$&nbsp;</span>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item" fxFlex>
+
+                            <mat-tab-group mat-stretch-tabs color="warn" dynamicHeight style="background-color: white;">
+                                <mat-tab label="Sorting">
+                                    <mat-form-field>
+                                        <mat-label>Sorting</mat-label>
+                                        <mat-select [(value)]="chosenSort">
+                                            <mat-option *ngFor="let s of sortMethods" [value]="s">{{s}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </mat-tab>
+                            </mat-tab-group>
+
+                        </div>
+
+                        <div class="item" fxFlex align="right">
+                            <button mat-raised-button (click)="applyFilters()"> Apply </button>
+                        </div>
+
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+
+        <div class="item" fxFlex>
+            <div class="container" fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+                fxLayoutGap="30px" fxLayoutGap.xs="0" fxLayoutGap.sm="0" style="margin-top: 2%;" *ngIf="(showData | async)">
+
+                <div class="item" fxFlex *ngFor="let item of listToShow[indexToShow]">
+                    <mat-card class="item-card">
+                        <mat-card-header>
+                            <mat-card-title>
+                                {{item.name}} -- ${{item.price}}
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                                Posted On: {{item.postDate | date:'mediumDate'}} | {{item.city}}, {{item.province}}
+                            </mat-card-subtitle>
+                        </mat-card-header>
+
+                        <mat-card-content>
+                            <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+                                fxLayoutGap.xs="0" style="margin-top: 2%;">
+                                <div class="item" fxFlex="10" *ngIf="!(lookingForBuyers | async)">
+                                    <img mat-card-image class="item-image" src="{{item.imageLinks[0]}}"
+                                        alt="Photo of a Textbook">
+                                </div>
+                                <div class="item" fxFlex>
+                                    <strong *ngIf="!(lookingForBuyers | async)">Seller: </strong><strong *ngIf="(lookingForBuyers | async)">Buyer: </strong><strong>{{item.contact.username}}</strong>
+                                    <br>
+                                    <p>
+                                        {{item.description}}
+                                    </p>
+                                    <br>
+                                    <p>
+                                        Condition: {{item.condition}}
+                                    </p>
+
+                                </div>
+                            </div>
+                        </mat-card-content>
+                        <mat-card-actions align="end">
+                            <button mat-raised-button>View Offer<mat-icon>chevron_right</mat-icon></button>
+                            <!-- <button mat-button>SHARE</button> -->
+                        </mat-card-actions>
+                    </mat-card>
+
+                </div>
+
+            </div>
+        </div>
+
+        <p *ngIf="!(showData | async)"> No Search Results Found</p>
+        <p *ngIf="(filterResult0 | async)"> Nothing matches Filter Query. Please Re-adjust filters to try again</p>
+    </div>
+
+
+
+
+
+</body>

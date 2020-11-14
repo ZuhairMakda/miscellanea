@@ -1,13 +1,77 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$nice-blue: ( 50 : #e7fafc, 100 : #c3f2f8, 200 : #9beaf4, 300 : #73e2ef, 400 : #55dbeb, 500 : #37d5e8, 600 : #31d0e5, 700 : #2acae2, 800 : #23c4de, 900 : #16bad8, A100 : #ffffff, A200 : #d6f8ff, A400 : #a3efff, A700 : #8aebff, contrast: ( 50 : #000000, 100 : #000000, 200 : #000000, 300 : #000000, 400 : #000000, 500 : #000000, 600 : #000000, 700 : #000000, 800 : #000000, 900 : #000000, A100 : #000000, A200 : #000000, A400 : #000000, A700 : #000000, ) );
+$primary-red: (
+    50: fae0e0,
+    100: f2b3b3,
+    200: ea8080,
+    300: e24d4d,
+    400: db2626,
+    500: d50000,
+    600: d00000,
+    700: ca0000,
+    800: c40000,
+    900: ba0000,
+    A100: ffe3e3,
+    A200: ffb0b0,
+    A400: ff7d7d,
+    A700: ff6363, 
+    contrast: (
+        0 : #000000, 
+        100 : #000000, 
+        200 : #000000, 
+        300 : #000000, 
+        400 : #000000, 
+        500 : #000000, 
+        600 : #000000, 
+        700 : #000000, 
+        800 : #000000, 
+        900 : #000000, 
+        A100 : #000000, 
+        A200 : #000000, 
+        A400 : #000000, 
+        A700 : #000000, 
+    ));
 
-$hatch-app-primary: mat-palette($mat-blue-grey);
+    $secondary-blue: (
+        50: e4e5f0,
+        100: babdd8,
+        200: 8d91bf,
+        300: 5f65a5,
+        400: 3c4491,
+        500: 1a237e,
+        600: 171f76,
+        700: 131a6b,
+        800: 0f1561,
+        900: 080c4e,
+        A100: 8387ff,
+        A200: 5056ff,
+        A400: 1d24ff,
+        A700: 030cff,
+    contrast: (
+        0 : #000000, 
+        100 : #000000, 
+        200 : #000000, 
+        300 : #000000, 
+        400 : #000000, 
+        500 : #000000, 
+        600 : #000000, 
+        700 : #000000, 
+        800 : #000000, 
+        900 : #000000, 
+        A100 : #000000, 
+        A200 : #000000, 
+        A400 : #000000, 
+        A700 : #000000, 
+    ));
+
+
+
+$app-primary: mat-palette($mat-indigo);
 //$hatch-app-accent: mat-palette($mat-pink, 500, 900, A100);
-$hatch-app-accent: mat-palette($nice-blue);
-$hatch-app-warn: mat-palette($mat-deep-orange);
+$app-accent: mat-palette($mat-pink);
+$app-warn: mat-palette($mat-deep-orange);
 
-$hatch-app-theme: mat-light-theme($hatch-app-primary, $hatch-app-accent, $hatch-app-warn);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
-@include angular-material-theme($hatch-app-theme);
+@include angular-material-theme($app-theme);

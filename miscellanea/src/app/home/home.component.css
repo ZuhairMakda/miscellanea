@@ -10,6 +10,7 @@
     margin-bottom: 1.5%;
     color:#E84A37;
     width: 100%;
+
   }
   
   .span {
@@ -50,17 +51,6 @@
     right: 18px;
     z-index: 999;
   }
-
-  #deals {  
-    float: right;
-    color:white;
-    background-color: #e84a37;
-    box-shadow: 20px;
-    position: fixed;
-    bottom: 60px;
-    right: 18px;
-    z-index: 999;
-  }
   
   
   button:focus {outline:0;}
@@ -89,15 +79,13 @@
   }
 
   .Logo{
-    position: absolute;
+    /* position: absolute;
     top: 20px;
-    left: calc(3vw - 10px);
+    left: calc(3vw - 10px); */
     width: 50px;
   }
-  
-  
-  
-  
+
+
   
   
   

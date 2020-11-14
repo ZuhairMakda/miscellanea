@@ -16,3 +16,24 @@ Make a listing page (posting page) -
     Input required details about sought after user or item to sell
     button to post 
     links to other pages
+
+
+
+Saturday:
+
+Listing Page:
+    - Filters Logic 
+        - add condition any
+    - Sort Logic
+    - Open Pop to see More Info
+        - Image Carousel
+        - Reveal Contact Info
+
+- Post Page
+
+- User Friendly Messages across the UI
+- 404 not found page
+- Dummy Account Page
+
+- design decisions update to reflect changes
+- update test plan instructions

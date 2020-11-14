@@ -1,5 +1,6 @@
-export interface Listing {
-    imageLinks: string[];
+import {Contact} from './listing';
+
+export interface Buyer {
     name: string;
     price: number;
     contact: Contact;
@@ -8,9 +9,4 @@ export interface Listing {
     postDate: Date;
     city: string;
     province: string;
-}
-
-export interface Contact {
-    username: string;
-    phoneNum: string;
 }
