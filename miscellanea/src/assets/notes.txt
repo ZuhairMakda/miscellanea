@@ -21,10 +21,9 @@ Make a listing page (posting page) -
 
 Saturday:
 
+- Deals Page
+
 Listing Page:
-    - Filters Logic 
-        - add condition any
-    - Sort Logic
     - Open Pop to see More Info
         - Image Carousel
         - Reveal Contact Info

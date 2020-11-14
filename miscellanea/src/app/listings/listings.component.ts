@@ -15,7 +15,7 @@ export class ListingsComponent implements OnInit {
   positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
   tooltipPosition = this.positionOptions[3];
 
-  conditionFilter: string = "new";
+  conditionFilter: string = "";
   requestTypeFilter: string = "sell";
 
 
@@ -89,7 +89,6 @@ export class ListingsComponent implements OnInit {
 
   applyFilters() {
     this.showData = Promise.resolve(false);
-    console.log(this.indexToShow);
 
     if (this.requestTypeFilter.toLowerCase().trim().includes("buy") && this.indexToShow === 0) {
       this.indexToShow = 1;
@@ -139,6 +138,16 @@ export class ListingsComponent implements OnInit {
     }
 
     //apply sorting
+    if (this.chosenSort === this.sortMethods[0]) { //lowest price
+      this.listToShow[this.indexToShow] = finalList[this.indexToShow].sort((a,b) => (a.price < b.price) ? -1 : 1);
+    } else if (this.chosenSort === this.sortMethods[1]) { //highest price
+      this.listToShow[this.indexToShow] = finalList[this.indexToShow].sort((a,b) => (a.price > b.price) ? -1 : 1);
+    } else if (this.chosenSort === this.sortMethods[2]) { //newest 
+      this.listToShow[this.indexToShow] = finalList[this.indexToShow].sort((a,b) => (a.postDate < b.postDate) ? -1 : 1);
+    } else if (this.chosenSort === this.sortMethods[3]) { //oldest
+      this.listToShow[this.indexToShow] = finalList[this.indexToShow].sort((a,b) => (a.postDate > b.postDate) ? -1 : 1);
+    }
+    
 
     this.showData = Promise.resolve(true);
   }
