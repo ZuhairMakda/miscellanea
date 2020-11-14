@@ -18,6 +18,7 @@ import { DataService } from './services/data-service.service';
 import { ListingsComponent } from './listings/listings.component';
 import { PostComponent } from './post/post.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ListingViewDialogComponent } from './listing-view-dialog/listing-view-dialog.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     DealsComponent,
     ListingsComponent,
     PostComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ListingViewDialogComponent
   ],
   imports: [
     BrowserModule,
