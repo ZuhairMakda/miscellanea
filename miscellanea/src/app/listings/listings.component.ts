@@ -64,13 +64,13 @@ export class ListingsComponent implements OnInit {
 
       this.showData = Promise.resolve(false);
 
-      if (!this.dataService.searchCriteria.toLowerCase().trim().includes("math textbook") && !this.dataService.searchCriteria.toLowerCase().trim().includes("calculator")) {
+      if (!this.dataService.searchCriteria.toLowerCase().trim().includes("textbook") && !this.dataService.searchCriteria.toLowerCase().trim().includes("calculator")) {
         //Not found Item
         console.log("Query Not found");
         this.showData = Promise.resolve(false);
 
       } else {
-        if (this.dataService.searchCriteria.toLowerCase().trim().includes("math textbook")) {
+        if (this.dataService.searchCriteria.toLowerCase().trim().includes("textbook")) {
           //looking at items being sold
           this.indexToShow = 0;
           this.lookingForBuyers = Promise.resolve(false);
