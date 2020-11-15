@@ -188,4 +188,5 @@ calculatorSellers: Listing[] = [ //base sort is lowest price first
   addToListings(newListing: Listing) {
     this.baseListings.push(newListing);
   }
+
 }

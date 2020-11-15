@@ -1,9 +1,182 @@
 <body>
-    <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
-        <span> <a routerLink="/" matTooltip="Go Home to Make a new search" [matTooltipPosition]='tooltipPosition'> <img class="Logo" src="../../assets/miscellanea_logo.png"> </a></span>
-        <span fxFlex></span>
-          <button mat-button><strong>Post Item</strong></button>
-          <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
-    </mat-toolbar>
+  <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
+    <span> <a routerLink="/" matTooltip="Go Home to Make a new search" [matTooltipPosition]='tooltipPosition'> <img
+          class="Logo" src="../../assets/miscellanea_logo.png"> </a></span>
+    <span fxFlex></span>
+    <button mat-button><strong>Post Item</strong></button>
+    <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+  </mat-toolbar>
 
-    </body>
+  <div class="container">
+    <mat-tab-group mat-stretch-tabs color="warn" dynamicHeight>
+      <mat-tab label="Create a Post!">
+        <div class="container" fxLayout="column" fxLayoutAlign="left" fxLayoutGap="1px" style="margin-top: 1%;">
+          <!-- first row -->
+          <div class="item" fxFlex>
+            <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+              fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 2%;">
+
+              <div class="item" fxFlex>
+                <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+                  fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 1%;">
+                  <div class="item" fxFlex>
+                    <form>
+                      <mat-form-field>
+                        <mat-label>ARE YOU LOOKING TO BUY OR SELL?</mat-label>
+                        <mat-select [(value)]="chosenListingType">
+                          <mat-option *ngFor="let l of listing" [value]="l" (click)="buyOrSell()">{{l}} </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item" fxFlex>
+                <form>
+                  <mat-form-field>
+                    <mat-label>NAME</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="name" matInput [(ngModel)]="name" formControlName="name">
+                    </div>
+                    <mat-error *ngIf="hasError('name', 'required')">This field is <strong>mandatory</strong></mat-error>
+                  </mat-form-field>
+                </form>
+              </div>
+              <div class="item" fxFlex>
+                <form>
+                  <mat-form-field>
+                    <mat-label>PRICE</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="price" matInput [(ngModel)]="price" formControlName="price">
+                    </div>
+                    <mat-error *ngIf="hasError('price', 'required')">This field is <strong>mandatory</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="container" fxLayout="column" fxLayoutAlign="left" fxLayoutGap="1px" *ngIf="!(buying | async)">
+            <!-- IMAGE -->
+            <div class="item" fxFlex>
+              <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+                fxLayoutGap.xs="0" fxLayoutGap.sm="30px">
+                <div class="item" fxFlex>
+                  <input type="file" (change)="onFileSelected($event)">
+                  <button type="button" (click)="onUpload()"> Upload</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- second row -->
+          <div class="item" fxFlex>
+            <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+              fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 1%;">
+              <div class="item" fxFlex>
+                <form>
+                  <mat-form-field>
+                    <mat-label>DESCRIPTION</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="description" matInput [(ngModel)]="description"
+                        formControlName="description">
+                    </div>
+                    <mat-error *ngIf="hasError('description', 'required')">This field is <strong>mandatory</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="item" fxFlex>
+            <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+              fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 1%;">
+              <div class="item" fxFlex>
+                <form>
+                  <mat-form-field>
+                    <mat-label>CITY</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="city" matInput [(ngModel)]="city" formControlName="city">
+                    </div>
+                    <mat-error *ngIf="hasError('city', 'required')">This field is <strong>mandatory</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </form>
+              </div>
+              <div class="item" fxFlex>
+                <form>
+                  <mat-form-field>
+                    <mat-label>PROVINCE</mat-label>
+                    <mat-select [(value)]="chosenProvince">
+                      <mat-option *ngFor="let p of provinces" [value]="p">{{p}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="item" fxFlex>
+            <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+              fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 1%;">
+              <div class="item" fxFlex>
+                <form>
+                  <mat-form-field>
+                    <mat-label>PHONE NUMBER</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="phone" matInput [(ngModel)]="phone" formControlName="phone">
+                    </div>
+                    <mat-error *ngIf="hasError('phone', 'required')">This field is <strong>mandatory</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </form>
+              </div>
+              <div class="item" fxFlex>
+                <form>
+                  <mat-form-field>
+                    <mat-label>POSTED BY</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="user" matInput [(ngModel)]="user" formControlName="user">
+                    </div>
+                    <mat-error *ngIf="hasError('user', 'required')">This field is <strong>mandatory</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </form>
+              </div>
+              <div class="item" fxFlex>
+                <form>
+                  <mat-form-field>
+                    <mat-label>CONDITION</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="condition" matInput [(ngModel)]="condition"
+                        formControlName="condition">
+                    </div>
+                    <mat-error *ngIf="hasError('condition', 'required')">This field is <strong>mandatory</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" fxFlex>
+          <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+            fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 1%;">
+
+            <div class="item" fxFlex align="right">
+              <button mat-raised-button (click)="submit()"> Submit </button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+
+
+  </div>
+
+</body>
