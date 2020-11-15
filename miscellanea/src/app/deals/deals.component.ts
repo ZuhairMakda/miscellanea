@@ -39,7 +39,7 @@ export class DealsComponent implements OnInit {
   {​​​​​
   name: "Youtube Premium",
   imgLink: "./../assets/deals/youtube.png",
-  description: "Get YouTube Premium for just $6.99 CAD per month. First month free, no ads, background play, download videos, and get Google Music Premium",
+  description: "Get YouTube Premium for just $6.99 CAD per month. First month free, no ads, background play, download videos, and get Google Music!",
   link: "https://www.youtube.com/premium/student"
   },
   {​​​​​
@@ -51,7 +51,7 @@ export class DealsComponent implements OnInit {
   {​​​​​
   name: "SPC",
   imgLink: "./../assets/deals/spc.png",
-  description: "Access over 450+ deals on tech, fashion, food, travel & more. Plus enter cool contests. Students use SPC every time you shop to save money. Up to 30% off. Never miss a deal.",
+  description: "Access over 450+ deals on tech, fashion, food, travel & more. Students use SPC every time you shop to save money. Up to 30% off!",
   link: "https://spccard.ca/signup"
   },
   {​​​​​
@@ -63,7 +63,7 @@ export class DealsComponent implements OnInit {
   {​​​​​
   name: "John's AUTO CENTER",
   imgLink: "./../assets/deals/auto.png",
-  description: "10% off on Labor charges for all services. Offer valid at Main Street Branch.",
+  description: "10% off on all auto Labor charges for all services. Offer valid only at Main Street Branch.",
   link: "https://johnsautocenter.net/"
   },​​​​
   {​​​​​
