@@ -191,4 +191,5 @@ loggedIn: Promise<boolean> = Promise.resolve(false);
   addToListings(newListing: Listing) {
     this.baseListings.push(newListing);
   }
+
 }
