@@ -25,7 +25,7 @@ export class DataService {
       province: "ON"
     },
     {
-      imageLinks: ['../../assets/textbooks/jscalc.jpg'],
+      imageLinks: ['../../assets/textbooks/jscalc.jpg', '../../assets/textbooks/jscalc_used.jpeg', '../../assets/textbooks/jscalc3.jpg'],
       name: "John Stewart Calculus",
       price: 68,
       contact: {
@@ -39,7 +39,7 @@ export class DataService {
       province: "ON"
     },
     {
-      imageLinks: ['../../assets/textbooks/jscalc_used.jpeg'],
+      imageLinks: ['../../assets/textbooks/jscalc_used.jpeg', '../../assets/textbooks/jscalc.jpg', '../../assets/textbooks/jscalc2.jpeg'],
       name: "John Stewart Calculus",
       price: 74,
       contact: {
@@ -53,7 +53,7 @@ export class DataService {
       province: "ON"
     },
     {
-      imageLinks: ['../../assets/textbooks/introProbStat.jpg'],
+      imageLinks: ['../../assets/textbooks/introProbStat.jpg', '../../assets/textbooks/ips_2.jpg', '../../assets/textbooks/ips_3.jpg'],
       name: "Introduction to Probability and Statistics",
       price: 90,
       contact: {
@@ -154,7 +154,7 @@ baseBuyers: Buyer[] = [ //base sort is lowest price first
 
 calculatorSellers: Listing[] = [ //base sort is lowest price first
   {
-    imageLinks: ['../../assets/calculators/991ms.jpg'],
+    imageLinks: ['../../assets/calculators/991ms.jpg', '../../assets/calculators/991ms_2.jpeg', '../../assets/calculators/991ms_3.jpg'],
     name: "Casio Fx-991ms",
     price: 12,
     contact: {
@@ -168,7 +168,7 @@ calculatorSellers: Listing[] = [ //base sort is lowest price first
     province: "ON"
   },
   {
-    imageLinks: ['../../assets/calculators/84plus.jpg'],
+    imageLinks: ['../../assets/calculators/84plus.jpg', '../../assets/calculators/84plus_3.jpg'],
     name: "Texas Instruments Ti-84+",
     price: 175,
     contact: {
@@ -182,6 +182,9 @@ calculatorSellers: Listing[] = [ //base sort is lowest price first
     province: "ON"
   },
 ];
+
+loggedInAs: string = "";
+loggedIn: Promise<boolean> = Promise.resolve(false);
 
   constructor() { }
 

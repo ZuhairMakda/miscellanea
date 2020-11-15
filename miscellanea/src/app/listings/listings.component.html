@@ -5,12 +5,20 @@
         <span fxFlex></span>
         <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
         <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+        <button mat-button (click)="login()">
+            <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}" *ngIf="(dataService.loggedIn | async)">
+              <mat-icon>how_to_reg</mat-icon> {{dataService.loggedInAs}}
+            </strong>
+            <strong class="with-icon" *ngIf="!(dataService.loggedIn | async)">
+              <mat-icon>person</mat-icon> Account 
+            </strong>
+          </button>
     </mat-toolbar>
 
 
     <div class="container" fxLayout fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left" fxLayoutGap="30px"
-        fxLayoutGap.xs="0" fxLayoutGap.sm="0" style="margin-top: 2%;">
-        <div class="item" fxFlex="20">
+        fxLayoutGap.xs="0" style="margin-top: 2%;">
+        <div class="item" fxFlex fxFill>
 
             <mat-tab-group mat-stretch-tabs color="warn" dynamicHeight style="background-color: white;" *ngIf="(showData | async)">
                 <mat-tab label="Filters">
@@ -86,11 +94,11 @@
         </div>
 
 
-        <div class="item" fxFlex>
+        <div class="item" fxFlex="80">
             <div class="container" fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
                 fxLayoutGap="30px" fxLayoutGap.xs="0" fxLayoutGap.sm="0" style="margin-top: 2%;" *ngIf="(showData | async)">
 
-                <div class="item" fxFlex *ngFor="let item of listToShow[indexToShow]">
+                <div class="item" #item fxFlex *ngFor="let item of listToShow[indexToShow]">
                     <mat-card class="item-card">
                         <mat-card-header>
                             <mat-card-title>
@@ -123,7 +131,7 @@
                             </div>
                         </mat-card-content>
                         <mat-card-actions align="end">
-                            <button mat-raised-button>View Offer<mat-icon>chevron_right</mat-icon></button>
+                            <button mat-raised-button (click)="openListing(item)">View Offer<mat-icon>chevron_right</mat-icon></button>
                             <!-- <button mat-button>SHARE</button> -->
                         </mat-card-actions>
                     </mat-card>

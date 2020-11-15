@@ -74,7 +74,7 @@ export class DealsComponent implements OnInit {
   },​​​​];
  
  constructor(
- private dataService: DataService,
+ public dataService: DataService,
  private router: Router
  ) { }
  
@@ -94,6 +94,10 @@ export class DealsComponent implements OnInit {
  }
  goToLink(url: string){
   window.open(url, "_blank");
+}
+
+login() {
+  this.router.navigate(['/login']);
 }
  
 }

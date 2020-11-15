@@ -4,6 +4,14 @@
         <span fxFlex></span>
           <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
           <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+          <button mat-button (click)="login()">
+            <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}" *ngIf="(dataService.loggedIn | async)">
+              <mat-icon>how_to_reg</mat-icon> {{dataService.loggedInAs}}
+            </strong>
+            <strong class="with-icon" *ngIf="!(dataService.loggedIn | async)">
+              <mat-icon>person</mat-icon> Account 
+            </strong>
+          </button>
     </mat-toolbar>
 
     <div class="container">
@@ -26,6 +34,19 @@
                     <mat-error *ngIf="hasError('search', 'required')">This field is <strong>mandatory</strong></mat-error>
                   </mat-form-field>
                 </form>
+
+                <h2>User Instructions: </h2>
+                <mat-list>
+                  <mat-list-item>
+                    -- Input a value into the search bar to search for listings
+                  </mat-list-item>
+                  <mat-list-item>
+                    -- When in the listings page, use the filters to update results. Toggle between BUY and SELL Request Type to search for Buyers and sellers of an item respectively.
+                  </mat-list-item>
+                  <mat-list-item>
+                    -- At any point, if you wish to come back to this page, please click the logo on the top left
+                  </mat-list-item>
+                </mat-list>
     
               </div>
     
@@ -40,11 +61,6 @@
           </mat-tab>
         </mat-tab-group>
 
-
-        <button mat-mini-fab (click)="goToPost()" matTooltip="Add Listing" [matTooltipPosition]='tooltipPosition'
-          id="new">
-          <mat-icon>add</mat-icon>
-        </button>
       </div>
 
 </body>

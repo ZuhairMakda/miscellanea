@@ -4,6 +4,14 @@
     <span fxFlex></span>
     <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
     <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+    <button mat-button (click)="login()">
+      <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}" *ngIf="(dataService.loggedIn | async)">
+        <mat-icon>how_to_reg</mat-icon> {{dataService.loggedInAs}}
+      </strong>
+      <strong class="with-icon" *ngIf="!(dataService.loggedIn | async)">
+        <mat-icon>person</mat-icon> Account 
+      </strong>
+    </button>
   </mat-toolbar>
 
   <div class="content" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid">

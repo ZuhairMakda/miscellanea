@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private _snackBar: MatSnackBar,
-    private dataService: DataService,
+    public dataService: DataService,
     private router: Router
     ) { }
 
@@ -98,6 +98,10 @@ export class HomeComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 
 }

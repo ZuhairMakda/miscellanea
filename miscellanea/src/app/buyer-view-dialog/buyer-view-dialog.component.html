@@ -3,33 +3,28 @@
 <mat-card class="mat-elevation-z0">
     <mat-card-header>
         <mat-card-title>
-            {{data.item.name}} -- ${{data.item.price}}
+            {{data.buyer.name}} -- ${{data.buyer.price}}
         </mat-card-title>
         <mat-card-subtitle>
-            Posted On: {{data.item.postDate | date:'mediumDate'}} | {{data.item.city}}, {{data.item.province}}
+            Posted On: {{data.buyer.postDate | date:'mediumDate'}} | {{data.buyer.city}}, {{data.buyer.province}}
         </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
         <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
             fxLayoutGap.xs="0" style="margin-top: 2%;">
-            <div class="item" fxFlex="40">
-                <ng-image-slider matTooltip="Click to Enlarge"  [images]="imageObject" #nav></ng-image-slider>
-                <!-- <img mat-card-image class="item-image" src="{{data.item.imageLinks[0]}}"
-                    alt="Photo of a Textbook"> -->
-            </div>
             <div class="item" fxFlex>
-                <strong>item: </strong><strong>{{data.item.contact.username}}</strong>
+                <strong>Buyer: </strong><strong>{{data.buyer.contact.username}}</strong>
                 <br>
                 <p>
-                    {{data.item.description}}
+                    {{data.buyer.description}}
                 </p>
                 <br>
                 <p>
-                    Condition: {{data.item.condition}}
+                    Condition: {{data.buyer.condition}}
                 </p>
                 <hr />
-                <strong *ngIf="(showContactInfo | async)">Phone Number: {{data.item.contact.phoneNum}}</strong>
+                <strong *ngIf="(showContactInfo | async)">Phone Number: {{data.buyer.contact.phoneNum}}</strong>
 
             </div>
         </div>

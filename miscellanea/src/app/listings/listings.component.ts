@@ -4,6 +4,17 @@ import { Router } from '@angular/router';
 import { Listing } from '../models/listing';
 import { DataService } from '../services/data-service.service';
 import { Buyer } from '../models/buyers';
+import { MatDialog } from '@angular/material/dialog';
+import { ListingViewDialogComponent } from '../listing-view-dialog/listing-view-dialog.component';
+import { BuyerViewDialogComponent } from '../buyer-view-dialog/buyer-view-dialog.component';
+
+export interface ListingDialogData {
+  item: Listing
+}
+
+export interface BuyerDialogData {
+  buyer: Buyer
+}
 
 @Component({
   selector: 'app-listings',
@@ -24,7 +35,7 @@ export class ListingsComponent implements OnInit {
 
   price: number[] = [0, 500]; //[min, max]
 
-  listOfTextbooks: Listing[] = this.dataService.baseListings;
+  listOfTextbooks: Listing[] = this.dataService.baseListings; 
   listOfTextbookBuyers: Buyer[] = this.dataService.mathBuyers;
   listOfCalculators: Listing[] = this.dataService.calculatorSellers;
   listOfCalculatorBuyers: Buyer[] = this.dataService.baseBuyers;
@@ -40,7 +51,9 @@ export class ListingsComponent implements OnInit {
 
   constructor(
     public dataService: DataService,
-    private router: Router
+    private router: Router,
+    public listingDialog: MatDialog,
+    public buyerDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -152,4 +165,33 @@ export class ListingsComponent implements OnInit {
     this.showData = Promise.resolve(true);
   }
 
-}
+  openListing(item) {
+    // console.log(item.name);
+
+    if (this.indexToShow === 1 || this.indexToShow === 3) {
+      this.buyerDialog.open(BuyerViewDialogComponent, {
+        data: {
+          buyer: item
+        },
+        autoFocus: false
+      });
+    } else {
+      this.listingDialog.open(ListingViewDialogComponent, {
+        data: {
+          item: item
+        },
+        autoFocus: false,
+      });
+    }
+
+
+  }
+
+  login() {
+    this.router.navigate(['/login']);
+  }
+
+
+  }
+
+

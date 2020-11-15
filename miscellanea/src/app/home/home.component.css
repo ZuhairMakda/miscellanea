@@ -85,6 +85,11 @@
     width: 50px;
   }
 
+ .with-icon {
+    display: flex;
+    align-items: center;
+}
+
 
   
   

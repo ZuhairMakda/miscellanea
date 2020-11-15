@@ -1,7 +1,12 @@
 .container {
-    /* background-color: white; */
+    background-color: white;
     margin: 3%;
     font-family: "Source Sans Pro",sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-bottom: 50px;
+    padding-top: 20px;
   }
   
   .mat-toolbar {
@@ -88,7 +93,6 @@
       color: white;
       
   }
-  
   
   .with-icon {
     display: flex;

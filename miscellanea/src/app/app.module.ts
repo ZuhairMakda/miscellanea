@@ -19,12 +19,16 @@ import { ListingsComponent } from './listings/listings.component';
 import { PostComponent } from './post/post.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ListingViewDialogComponent } from './listing-view-dialog/listing-view-dialog.component';
+import { BuyerViewDialogComponent } from './buyer-view-dialog/buyer-view-dialog.component';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { AccountComponent } from './account/account.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'deals', component: DealsComponent},
   { path: 'post', component: PostComponent},
   { path: 'listings', component: ListingsComponent},
+  { path: 'login', component: AccountComponent},
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 
@@ -36,7 +40,9 @@ const appRoutes: Routes = [
     ListingsComponent,
     PostComponent,
     PageNotFoundComponent,
-    ListingViewDialogComponent
+    ListingViewDialogComponent,
+    BuyerViewDialogComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +52,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     MaterialModule,
     BrowserAnimationsModule,
+    NgImageSliderModule,
     HttpClientModule,
     FlexLayoutModule,
     RouterModule.forRoot(appRoutes,
@@ -55,5 +62,6 @@ const appRoutes: Routes = [
   providers: [DataService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [ ListingViewDialogComponent, BuyerViewDialogComponent ]
 })
 export class AppModule { }

@@ -1,0 +1,62 @@
+<body>
+    <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
+        <span> <a routerLink="/" matTooltip="Search Items" [matTooltipPosition]='tooltipPosition'> <img class="Logo" src="../../assets/miscellanea_logo.png"> </a></span>
+        <span fxFlex></span>
+          <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
+          <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+          <button mat-button >
+            <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}" *ngIf="(dataService.loggedIn | async)">
+              <mat-icon>how_to_reg</mat-icon> {{dataService.loggedInAs}}
+            </strong>
+            <strong class="with-icon" *ngIf="!(dataService.loggedIn | async)">
+              <mat-icon>person</mat-icon> Account 
+            </strong>
+          </button>
+    </mat-toolbar>
+
+    <div class="container">
+            <div class="container" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+                <div class="item" fxFlex fxFill align="center">
+                    <h2 style="color: #d50000; margin-left: auto; margin-right: auto;" >LOGIN</h2>
+                    <hr  style="width: 100%;" />
+                </div>
+              <div class="item" fxFlex>
+    
+                <form>
+                  <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <div [formGroup]="myGroup">
+                      <input type="text" aria-label="search" matInput
+                        [(ngModel)]="username" formControlName="username">
+                    </div>
+                    <mat-error *ngIf="hasError('username', 'required')">This field is <strong>mandatory</strong></mat-error>
+                  </mat-form-field>
+                </form>
+    
+              </div>
+    
+              <div class="item" fxFlex>
+
+                <form>
+                    <mat-form-field>
+                      <mat-label>Password</mat-label>
+                      <div [formGroup]="myGroup">
+                        <input [type]="hide ? 'password' : 'text'" aria-label="search" matInput
+                          [(ngModel)]="password" formControlName="password" (keydown.enter)="authenticate()">
+                      </div>
+                      <button mat-icon-button type="button" matSuffix (click)="hide = !hide"><mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></button>
+                      <mat-error *ngIf="hasError('password', 'required')">This field is <strong>mandatory</strong></mat-error>
+                    </mat-form-field>
+                  </form>
+
+              </div>
+
+              <div class="item" fxFlex>
+                  <button mat-raised-button (click)="authenticate()">LOGIN</button>
+              </div>
+            </div>
+    
+
+      </div>
+
+</body>

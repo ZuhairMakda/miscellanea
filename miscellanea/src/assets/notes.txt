@@ -22,17 +22,23 @@ Make a listing page (posting page) -
 Saturday:
 
 - Deals Page
-
-Listing Page:
-    - Open Pop to see More Info
-        - Image Carousel
-        - Reveal Contact Info
-
 - Post Page
-
-- User Friendly Messages across the UI
 - 404 not found page
-- Dummy Account Page
 
+Video
 - design decisions update to reflect changes
+    - 404 page 
+    - milestone 2
+    - forced inputs
+
+
 - update test plan instructions
+    - "math textbook or calculator" search only
+    - posting make sure you put the given information
+    - update filters and sortings instructions based on what's available
+
+
+Upload Video
+Upload Test Plan instructions
+Deploy To Firebase
+Zip Source code and submit

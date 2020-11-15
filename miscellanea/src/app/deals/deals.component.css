@@ -125,3 +125,8 @@ button:focus {
   bottom: 5px;
   padding-top: 20%;
 }
+
+.with-icon {
+  display: flex;
+  align-items: center;
+}
