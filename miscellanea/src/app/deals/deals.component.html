@@ -1,25 +1,27 @@
 <body>
   <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
-    <span> <a routerLink="/" matTooltip="Search Items" [matTooltipPosition]='tooltipPosition'> <img class="Logo" src="../../assets/miscellanea_logo.png"> </a></span>
+    <span> <a routerLink="/" matTooltip="Search Items" [matTooltipPosition]='tooltipPosition'> <img class="Logo"
+          src="../../assets/miscellanea_logo.png"> </a></span>
     <span fxFlex></span>
     <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
     <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
     <button mat-button (click)="login()">
-      <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}" *ngIf="(dataService.loggedIn | async)">
+      <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}"
+        *ngIf="(dataService.loggedIn | async)">
         <mat-icon>how_to_reg</mat-icon> {{dataService.loggedInAs}}
       </strong>
       <strong class="with-icon" *ngIf="!(dataService.loggedIn | async)">
-        <mat-icon>person</mat-icon> Account 
+        <mat-icon>person</mat-icon> Account
       </strong>
     </button>
   </mat-toolbar>
 
   <div class="content" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.lg="33%" *ngFor="let deal of deals">
+    <div fxFlex="25%" fxFlex.xs="100%" *ngFor="let deal of deals">
       <mat-card>
-        <a href={{deal.link}} target="_blank"> 
-        <img mat-card-image class="deal-image" src={{deal.imgLink}}>
-      </a>
+        <a href={{deal.link}} target="_blank">
+          <img mat-card-image class="deal-image" src={{deal.imgLink}}>
+        </a>
         <mat-card-content class="deal-content">
           <p id="description">
             {{deal.description}}
@@ -31,5 +33,5 @@
 
 
 
-    
+
 </body>

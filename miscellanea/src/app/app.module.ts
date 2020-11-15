@@ -23,6 +23,8 @@ import { BuyerViewDialogComponent } from './buyer-view-dialog/buyer-view-dialog.
 import { NgImageSliderModule } from 'ng-image-slider';
 import { AccountComponent } from './account/account.component';
 
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'deals', component: DealsComponent},
@@ -58,6 +60,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes,
       { enableTracing: false } // <-- for debugging purposes only)
     ),
+    NgxMatFileInputModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent],

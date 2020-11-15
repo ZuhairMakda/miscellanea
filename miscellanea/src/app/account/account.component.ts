@@ -65,6 +65,8 @@ export class AccountComponent implements OnInit {
   
       this.username = "";
       this.password = "";
+
+      this.router.navigate(['/']);
     }
     
   }

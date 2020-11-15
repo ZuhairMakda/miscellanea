@@ -1,18 +1,20 @@
 <body>
   <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
-    <span> <a routerLink="/" matTooltip="Search Items" [matTooltipPosition]='tooltipPosition'> <img class="Logo" src="../../assets/miscellanea_logo.png"> </a></span>
+    <span> <a routerLink="/" matTooltip="Search Items" [matTooltipPosition]='tooltipPosition'> <img class="Logo"
+          src="../../assets/miscellanea_logo.png"> </a></span>
     <span fxFlex></span>
-      <button mat-button><strong>Post Item</strong></button>
-      <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
-      <button mat-button (click)="login()">
-        <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}" *ngIf="(dataService.loggedIn | async)">
-          <mat-icon>how_to_reg</mat-icon> {{dataService.loggedInAs}}
-        </strong>
-        <strong class="with-icon" *ngIf="!(dataService.loggedIn | async)">
-          <mat-icon>person</mat-icon> Account 
-        </strong>
-      </button>
-</mat-toolbar>
+    <button mat-button><strong>Post Item</strong></button>
+    <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+    <button mat-button (click)="login()">
+      <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}"
+        *ngIf="(dataService.loggedIn | async)">
+        <mat-icon>how_to_reg</mat-icon> {{dataService.loggedInAs}}
+      </strong>
+      <strong class="with-icon" *ngIf="!(dataService.loggedIn | async)">
+        <mat-icon>person</mat-icon> Account
+      </strong>
+    </button>
+  </mat-toolbar>
 
   <div class="container">
     <mat-tab-group mat-stretch-tabs color="warn" dynamicHeight>
@@ -21,23 +23,24 @@
           <!-- first row -->
           <div class="item" fxFlex>
             <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
-              fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 2%;">
-
+              fxLayoutGap.xs="0">
               <div class="item" fxFlex>
-                <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
-                  fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 1%;">
-                  <div class="item" fxFlex>
-                    <form>
-                      <mat-form-field>
-                        <mat-label>ARE YOU LOOKING TO BUY OR SELL?</mat-label>
-                        <mat-select [(value)]="chosenListingType">
-                          <mat-option *ngFor="let l of listing" [value]="l" (click)="buyOrSell()">{{l}} </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    </form>
-                  </div>
-                </div>
+                <form>
+                  <mat-form-field>
+                    <mat-label>ARE YOU LOOKING TO BUY OR SELL?</mat-label>
+                    <mat-select [(value)]="chosenListingType">
+                      <mat-option *ngFor="let l of listing" [value]="l" (click)="buyOrSell()">{{l}} </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </form>
               </div>
+            </div>
+          </div>
+
+          <div class="item" fxFlex>
+            <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
+              fxLayoutGap.xs="0">
+
 
               <div class="item" fxFlex>
                 <form>
@@ -71,8 +74,13 @@
               <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="30px"
                 fxLayoutGap.xs="0" fxLayoutGap.sm="30px">
                 <div class="item" fxFlex>
-                  <input type="file" (change)="onFileSelected($event)">
-                  <button type="button" (click)="onUpload()"> Upload</button>
+                  <!-- <input type="file" (change)="onFileSelected($event)"> -->
+                  <mat-form-field>
+                    <ngx-mat-file-input [multiple]="multiple" [accept]="accept" [color]="color">
+                    </ngx-mat-file-input>
+                  </mat-form-field>
+                  <button mat-raised-button (click)="onUpload()"> Upload </button>
+                  <!-- <button type="button" (click)="onUpload()"> Upload</button> -->
                 </div>
               </div>
             </div>
@@ -175,7 +183,7 @@
             fxLayoutGap.xs="0" fxLayoutGap.sm="30px" style="margin-top: 1%;">
 
             <div class="item" fxFlex align="right">
-              <button mat-raised-button (click)="submit()"> Submit </button>
+              <button mat-raised-button (click)="submit()" (click)="onSuccessfulPost()"> Submit </button>
             </div>
           </div>
         </div>

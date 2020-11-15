@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
@@ -38,22 +39,25 @@ export class PostComponent implements OnInit {
 
   boolBuying: boolean = false;
 
-
   selectedFile: File = null;
+
+  color: ThemePalette = 'primary';
+  disabled: boolean = false;
+  multiple: boolean = false;
+  accept: string;
 
   onFileSelected(event){
     this.selectedFile = <File>event.target.files[0];
   }
 
   onUpload() {
-    // const fd = new FormData();
-    // fd.append('image', this.selectedFile, this.selectedFile.name);
-    // this.http.post('http://localhost:4200/post',fd).subscribe(res => {console.log(res);})
-
     this.openSnackBar("Image upload received.", "Close")
   }
 
-  
+  onSuccessfulPost() {
+    this.openSnackBar("Post successfully uploaded.", "Close")
+  }
+
   constructor(
     public dataService: DataService,
     private router: Router,
@@ -97,14 +101,6 @@ export class PostComponent implements OnInit {
   }
 
   submit() {
-
-    console.log(this.name);
-    console.log(this.price);
-    console.log(this.description);
-    console.log(this.city);
-    console.log(this.chosenProvince);
-    console.log(this.phone);
-    console.log(this.user);
 
     if (this.name == "" || 
         this.price <= 0 || 
