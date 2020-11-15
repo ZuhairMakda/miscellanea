@@ -16,22 +16,83 @@
     </button>
   </mat-toolbar>
 
-  <div class="content" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" *ngFor="let deal of deals">
-      <mat-card>
-        <a href={{deal.link}} target="_blank">
-          <img mat-card-image class="deal-image" src={{deal.imgLink}}>
-        </a>
-        <mat-card-content class="deal-content">
-          <p id="description">
-            {{deal.description}}
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <mat-tab-group mat-stretch-tabs color="warn" dynamicHeight>
+    <mat-tab label="Find AMAZING Deals!">
+    </mat-tab>
+  </mat-tab-group>
+
+  <div fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="10px" ngClass.gt-xs="ml-10">
+    <mat-card class="custom" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+      fxFlex.gt-md="0 1 calc(25%-10px)">
+      <mat-card-title></mat-card-title>
+      <a href={{deals[0].link}} target="_blank">
+        <img mat-card-image src={{deals[0].imgLink}} class="deal-image">
+      </a>
+      <mat-card-actions>{{deals[0].description}}</mat-card-actions>
+    </mat-card>
+
+    <mat-card class="custom" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+      fxFlex.gt-md="0 1 calc(25%-10px)">
+      <mat-card-title></mat-card-title>
+      <a href={{deals[1].link}} target="_blank">
+        <img mat-card-image src={{deals[1].imgLink}} class="deal-image">
+      </a>
+      <mat-card-actions>{{deals[1].description}}</mat-card-actions>
+    </mat-card>
+
+    <mat-card class="custom" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+      fxFlex.gt-md="0 1 calc(25%-10px)">
+      <mat-card-title></mat-card-title>
+      <a href={{deals[2].link}} target="_blank">
+        <img mat-card-image src={{deals[2].imgLink}} class="deal-image">
+      </a>
+      <mat-card-actions>{{deals[2].description}}</mat-card-actions>
+    </mat-card>
+
+    <mat-card class="custom" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+      fxFlex.gt-md="0 1 calc(25%-10px)">
+      <mat-card-title></mat-card-title>
+      <a href={{deals[3].link}} target="_blank">
+        <img mat-card-image src={{deals[3].imgLink}} class="deal-image">
+      </a>
+      <mat-card-actions>{{deals[3].description}}</mat-card-actions>
+    </mat-card>
+
+    <mat-card class="custom" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+      fxFlex.gt-md="0 1 calc(25%-10px)">
+      <mat-card-title></mat-card-title>
+      <a href={{deals[4].link}} target="_blank">
+        <img mat-card-image src={{deals[4].imgLink}} class="deal-image">
+      </a>
+      <mat-card-actions>{{deals[4].description}}</mat-card-actions>
+    </mat-card>
+
+    <mat-card class="custom" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+      fxFlex.gt-md="0 1 calc(25%-10px)">
+      <mat-card-title></mat-card-title>
+      <a href={{deals[5].link}} target="_blank">
+        <img mat-card-image src={{deals[5].imgLink}} class="deal-image">
+      </a>
+      <mat-card-actions>{{deals[5].description}}</mat-card-actions>
+    </mat-card>
+
+    <mat-card class="custom" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+      fxFlex.gt-md="0 1 calc(25%-10px)">
+      <mat-card-title></mat-card-title>
+      <a href={{deals[6].link}} target="_blank">
+        <img mat-card-image src={{deals[6].imgLink}} class="deal-image">
+      </a>
+      <mat-card-actions>{{deals[6].description}}</mat-card-actions>
+    </mat-card>
+
+    <mat-card class="custom" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+      fxFlex.gt-md="0 1 calc(25%-10px)">
+      <mat-card-title></mat-card-title>
+      <a href={{deals[7].link}} target="_blank">
+        <img mat-card-image src={{deals[7].imgLink}} class="deal-image">
+      </a>
+      <mat-card-actions>{{deals[7].description}}</mat-card-actions>
+    </mat-card>
+
   </div>
-
-
-
-
 </body>
