@@ -55,7 +55,7 @@ export class PostComponent implements OnInit {
 
   
   constructor(
-    private dataService: DataService,
+    public dataService: DataService,
     private router: Router,
     private http: HttpClient,
     private _snackBar: MatSnackBar
@@ -159,6 +159,10 @@ export class PostComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 
 }

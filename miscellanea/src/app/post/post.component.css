@@ -72,3 +72,8 @@ button:focus {
   background-color: #d50000;
   color: white;
 }
+
+.with-icon {
+  display: flex;
+  align-items: center;
+}
