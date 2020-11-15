@@ -1,1 +1,30 @@
-<p>404 Error Page Not Found</p>
+<body>
+    <mat-toolbar fxLayout="row" fxLayoutAlign="start center">
+        <span> <a routerLink="/" matTooltip="Search Items" [matTooltipPosition]='tooltipPosition'> <img class="Logo"
+                    src="../../assets/miscellanea_logo.png"> </a></span>
+        <span fxFlex></span>
+        <button mat-button (click)="goToPost()"><strong>Post Item</strong></button>
+        <button mat-button (click)="goToDeals()"><strong>Student Deals</strong></button>
+        <button mat-button (click)="goToLogin()">
+            <strong class="with-icon" matTooltip="Logged in As {{dataService.loggedInAs}}"
+                *ngIf="(dataService.loggedIn | async)">
+                <mat-icon>how_to_reg</mat-icon> {{dataService.loggedInAs}}
+            </strong>
+            <strong class="with-icon" *ngIf="!(dataService.loggedIn | async)">
+                <mat-icon>person</mat-icon> Account
+            </strong>
+        </button>
+    </mat-toolbar>
+
+    <div class="container">
+        <div class="container" fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+            <div class="item" fxFlex fxFill align="center">
+                <h2 style="color: #d50000; margin-left: auto; margin-right: auto;">404 PAGE NOT FOUND</h2>
+                <hr style="width: 100%;" />
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
